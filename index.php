@@ -9,7 +9,7 @@
 <body>
   <header>
     <img src="img/logo.png"></img>
-    <p>Teddy millionaire</p>
+    <p>Teddy milliardaire</p>
   </header>
   
 </body>
