@@ -37,7 +37,7 @@
   <!-- Right-aligned links -->
   <div class="topnav-right">
     <a href="#contact">Nous contacter</a>
-    <a href="#teddy">Teddy</a>
+    <a href="connexion_page.php">Connexion</a>
   </div>
   
 </div>
