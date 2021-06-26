@@ -9,7 +9,7 @@
 
 include 'config/connect.php';
 session_start();
-$idclient = $_GET['id'];
+$idclient = $_SESSION['id'];
 
 ?>
     </head>
@@ -21,7 +21,7 @@ $idclient = $_GET['id'];
                     while ($obj = $result->fetch_object()){
                         ?>
                        <div class='col-12'>
-                        <form action='modificationClient.php' method='post'>
+                        <form action='modificationProfil.php' method='post'>
                         <?php echo "<input type='hidden'  name='id' value='".$idclient."'>";?>
                             <label for="inputNom" class="col-sm-2 col-form-label">Nom</label>
                         <div class="col-sm-10">
@@ -68,7 +68,7 @@ $idclient = $_GET['id'];
                         <input type="text" class="form-control " id="inputCP" name="cp" placeholder="<?php echo $obj->cp ?>"  onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="5" minlength="5">
                     <button type="submit" class="btn btn-primary mb-2">Modifier</button>
                          </form>
-                         <?php echo "<a class='btn btn-danger' href='supprimerClient?id=".$idclient."' role='button'>Supprimer</a>" ?>
+                         
                         </div>
                         <?php
                     }
