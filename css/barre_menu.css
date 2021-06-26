@@ -1,0 +1,25 @@
+
+body{
+  background-color:#ebe1cc;
+}
+
+.jumbotron {
+
+  background-color: #ac9b83;
+}
+.navbar-custom {
+  background-color: #ac9b83;
+}
+
+.rechercher, .rechercher:hover, .rechercher:focus, .rechercher.focus, 
+    .rechercher:active, .rechercher.active, .rechercher:visited,
+    .rechercher:active:hover, .rechercher.active:hover, 
+    .rechercher:active:focus, .rechercher.active.focus  {
+  background-color:#b38d5e ;
+  border: black;
+  color: white;
+}
+
+.jumbotron{
+  margin-bottom: 0px;
+}
