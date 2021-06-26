@@ -13,18 +13,12 @@
     <body>
         <div class="container">
 
-            <ul>
-            <?php
-            $sql = "SELECT * from categorie";
-            if ($result = $conn->query($sql)){
-                while ($obj = $result->fetch_object()){
-                    echo "<li><a href='categorie?cat=".$obj->id."'>".$obj->nom."</a></li>";
-                    
-                }
-            }
-            $result->close();
-            ?>
-            </ul>
+            <div class="row">
+                <a href="listeCategorieAdmin">Produits</a>
+            </div>
+            <div class="row">
+                <a href="clients.php">Clients</a>
+            </div>
         </div>
     </body>
 </html>

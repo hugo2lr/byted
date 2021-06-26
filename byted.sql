@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 24 juin 2021 à 16:23
+-- Généré le :  sam. 26 juin 2021 à 18:19
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.4.0
 
@@ -25,6 +25,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int(11) NOT NULL,
+  KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `admin`
+--
+
+INSERT INTO `admin` (`id`) VALUES
+(6);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `adresse`
 --
 
@@ -35,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `adresse` (
   `ville` varchar(50) NOT NULL,
   `cp` varchar(5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `adresse`
@@ -44,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `adresse` (
 INSERT INTO `adresse` (`id`, `rue`, `ville`, `cp`) VALUES
 (1, '117 Avenue de la République ', 'Pontault-Combault', '77340'),
 (2, 'Rue random du KB', 'Kremlin Biceps', '91270'),
-(4, 'test', 'test', '78345');
+(6, 'Rue de l\'admin', 'Ville de l\'admin', '99999');
 
 -- --------------------------------------------------------
 
@@ -75,26 +94,17 @@ INSERT INTO `categorie` (`id`, `nom`) VALUES
 
 DROP TABLE IF EXISTS `client`;
 CREATE TABLE IF NOT EXISTS `client` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(30) NOT NULL,
-  `prenom` varchar(30) NOT NULL,
-  `mail` varchar(50) NOT NULL,
-  `mdp` varchar(50) NOT NULL,
-  `date` date NOT NULL,
-  `tel` varchar(10) NOT NULL,
-  `idadresse` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idadresse` (`idadresse`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `id` int(11) NOT NULL,
+  KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `client`
 --
 
-INSERT INTO `client` (`id`, `nom`, `prenom`, `mail`, `mdp`, `date`, `tel`, `idadresse`) VALUES
-(1, 'Girardeau', 'Hugo', 'hugo', 'hugo', '2000-11-05', '0629584490', 2),
-(2, 'Ouazzani', 'Teddy', 'ted', 'ted', '2000-12-05', '0651313191', 1),
-(3, 'test', 'test', 'test', 'test', '2021-06-24', '0789466164', 4);
+INSERT INTO `client` (`id`) VALUES
+(1),
+(2);
 
 -- --------------------------------------------------------
 
@@ -147,8 +157,7 @@ CREATE TABLE IF NOT EXISTS `modele` (
 
 INSERT INTO `modele` (`id`, `nom`, `prix`, `info`, `idcat`, `image`) VALUES
 (1, 'Sweat Ponce', '49.90', 'Petit sweat collector du vidéaste et influenceur Ponce', 1, 'sweat_ponce_blanc.jpg'),
-(2, 'Sweat Attachiante', '49.90', 'Sweat Attachiante incroyablement incroyable', 1, 'sweat_attachiante_blanc.jpg'),
-(3, 'Sweat Storm', '59.95', 'Sweat quali sah', 1, 'sweat_storm.jpg'),
+(3, 'Sweat Storm', '60.00', 'Bon si je fais un truc un peu long Ã§a passe', 1, 'sweat_storm.jpg'),
 (4, 'Sweat Warm Sand', '33.29', 'Sweat à capuche marron', 1, 'sweat_warm_sand.jpg'),
 (5, 'Casquette Gucci', '99.95', 'Une belle casquette pour gérer des ptites michros', 2, 'casquette_gucci.jpg'),
 (6, 'Casquette Mercedes', '55.95', 'Casquette de merde réservés aux buveurs de monster', 2, 'casquette_mercedes.jpg'),
@@ -230,6 +239,35 @@ INSERT INTO `taille` (`id`, `nomTaille`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `utilisateur`
+--
+
+DROP TABLE IF EXISTS `utilisateur`;
+CREATE TABLE IF NOT EXISTS `utilisateur` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(30) NOT NULL,
+  `prenom` varchar(30) NOT NULL,
+  `mail` varchar(50) NOT NULL,
+  `mdp` varchar(50) NOT NULL,
+  `date` date NOT NULL,
+  `tel` varchar(10) NOT NULL,
+  `idadresse` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idadresse` (`idadresse`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `mail`, `mdp`, `date`, `tel`, `idadresse`) VALUES
+(1, 'Girardeau', 'Hugo', 'hugo', 'hugo', '2000-11-05', '0629584490', 2),
+(2, 'Ouazzani', 'ted', 'ted', 'ted', '2021-06-26', '0651313191', 1),
+(6, 'admin', 'admin', 'admin', 'admin', '2021-06-26', '0199999999', 6);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `wishlist`
 --
 
@@ -246,16 +284,22 @@ CREATE TABLE IF NOT EXISTS `wishlist` (
 --
 
 --
+-- Contraintes pour la table `admin`
+--
+ALTER TABLE `admin`
+  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`id`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Contraintes pour la table `client`
 --
 ALTER TABLE `client`
-  ADD CONSTRAINT `client_ibfk_1` FOREIGN KEY (`idadresse`) REFERENCES `adresse` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `client_ibfk_1` FOREIGN KEY (`id`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `commande`
 --
 ALTER TABLE `commande`
-  ADD CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`idclient`) REFERENCES `client` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`idclient`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `commande_ibfk_2` FOREIGN KEY (`idproduit`) REFERENCES `produit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -269,7 +313,7 @@ ALTER TABLE `modele`
 --
 ALTER TABLE `panier`
   ADD CONSTRAINT `panier_ibfk_2` FOREIGN KEY (`idproduit`) REFERENCES `produit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `panier_ibfk_3` FOREIGN KEY (`idclient`) REFERENCES `client` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `panier_ibfk_3` FOREIGN KEY (`idclient`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `produit`
@@ -279,10 +323,16 @@ ALTER TABLE `produit`
   ADD CONSTRAINT `produit_ibfk_3` FOREIGN KEY (`idtaille`) REFERENCES `taille` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Contraintes pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  ADD CONSTRAINT `utilisateur_ibfk_1` FOREIGN KEY (`idadresse`) REFERENCES `adresse` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Contraintes pour la table `wishlist`
 --
 ALTER TABLE `wishlist`
-  ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`idclient`) REFERENCES `client` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`idclient`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `wishlist_ibfk_2` FOREIGN KEY (`idmodele`) REFERENCES `modele` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
