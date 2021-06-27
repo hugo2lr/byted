@@ -1,0 +1,23 @@
+ 
+
+body{
+    background-color:#ebe1cc;
+
+}
+.card-text{
+  font-weight: bold;
+  font-size: 125%;
+}
+.card-img-top, .card-body{
+background-color:#f5eae4;
+}
+.prix{
+  font-size: 200%;
+}
+.article{
+  border: 0.7px solid black;
+}
+.achat{
+
+} 
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }

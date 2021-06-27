@@ -10,6 +10,10 @@ body{
 .navbar-custom {
   background-color: #ac9b83;
 }
+.navbar{
+  margin-bottom: 0px;
+  max-width: 100%;
+}
 
 .rechercher, .rechercher:hover, .rechercher:focus, .rechercher.focus, 
     .rechercher:active, .rechercher.active, .rechercher:visited,
