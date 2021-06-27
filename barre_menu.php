@@ -27,10 +27,17 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          <i class="fas fa-tshirt"></i> Nos textiles 
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Teddys</a>
-          <a class="dropdown-item" href="#">Sweatshirts</a>
-          <a class="dropdown-item" href="#">Jeans</a>
+        <div class="dropdown-menu">
+            <?php
+            $sql = "SELECT * from categorie";
+            if ($result = $conn->query($sql)){
+                while ($obj = $result->fetch_object()){
+                    echo "<a class='dropdown-item' href='categorie?cat=".$obj->id."'>".$obj->nom."</a>";
+                    
+                }
+            }
+            $result->close();
+            ?>
         </div>
       </li>
 
@@ -43,19 +50,37 @@
 
 
 
-
-    <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-user"></i> Profil</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-user"></i> Profil 
+        </a>
+        <div class="dropdown-menu">
+        <a class='dropdown-item' href="profil">Profil</a>
+        <a class='dropdown-item' href="wishlist">Wishlist</a>
+        <a class='dropdown-item' href="commandes">Commandes</a>
+        </div>
       </li>
 
         <li class="nav-item">
-        <a class="nav-link" href="./panier.php"><i class="fas fa-shopping-cart"></i> Panier   <span class="badge badge-pill badge-secondary"><?php if(empty($SESSION['panier'])){echo 0;} else {echo count($_SESSION["panier"]);}?></span></a> 
+        <a class="nav-link" href="./panier.php"><i class="fas fa-shopping-cart"></i> Panier   <span class="badge badge-pill badge-secondary"><?php 
+        $sql = "SELECT SUM(quantite) AS count FROM panier WHERE idclient =".$_SESSION['id'];
+        if ($result = $conn->query($sql)){
+          while ($obj = $result->fetch_object()){
+              echo $obj->count;
+              
+          }
+      }
+        ?></span></a> 
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="login.php"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a>
       </li>
     </ul>
-       <form class="form-inline my-2 my-sm-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Un article en tête ?" aria-label="Search">
+       <form class="form-inline my-2 my-sm-0" action='recherche' method='post'>
+      <input class="form-control mr-sm-2" type="search" placeholder="Un article en tête ?" aria-label="Search" name="recherche">
       <button class="btn rechercher btn-primary	 btn-sm" type="submit">Rechercher</button>
     </form>
+
   </div>
 </nav>
 

@@ -21,8 +21,17 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
-    $sql = "INSERT INTO client VALUES (NULL, '".$_SESSION['nom']."', '".$_SESSION['prenom']."', '".$_SESSION['mail']."', '".$_SESSION['mdp']."', '".$_SESSION['date']."', '".$_SESSION['tel']."', '".$row['id']."')";
+    $sql = "INSERT INTO utilisateur VALUES (NULL, '".$_SESSION['nom']."', '".$_SESSION['prenom']."', '".$_SESSION['mail']."', '".$_SESSION['mdp']."', '".$_SESSION['date']."', '".$_SESSION['tel']."', '".$row['id']."')";
     $conn->query($sql);
+  }
+}
+
+$sql = "SELECT id FROM utilisateur WHERE mail='".$_SESSION['mail']."'";
+if ($result = $conn->query($sql)){
+  while ($obj = $result->fetch_object()){
+      $sql2 = "INSERT INTO client VALUES ('".$obj->id."')";
+      $_SESSION["id"]=$obj->id;
+      $conn->query($sql2); 
   }
 }
 header('Location: index');

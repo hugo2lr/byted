@@ -23,5 +23,18 @@ if (isset($_POST['image'])&& ($_POST['image']!='')){
     $conn->query($sql);
 }
 
+if (isset($_POST['qty'])&& ($_POST['qty']!='')){
+    $sql = "SELECT * FROM produit WHERE idmodele =".$_POST["mod"]." AND idtaille =".$_POST["taille"];
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $sql = "UPDATE produit SET stock ='".$_POST['qty']."' WHERE idmodele =".$_POST['mod']." AND idtaille = ".$_POST["taille"];
+        $conn->query($sql);
+    }
+    else {
+        $sql = "INSERT INTO produit VALUES (NULL, '".$_POST['mod']."', '".$_POST["taille"]."', '".$_POST["qty"]."')"; 
+        $conn->query($sql);
+    }
+}
+
 header('Location: modifierModele?mod='.$_POST["mod"]);
 ?>

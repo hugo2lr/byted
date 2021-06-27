@@ -21,3 +21,26 @@ background-color:#f5eae4;
 
 } 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.img-liste-modele {
+  margin-top:1em;
+  overflow: hidden;
+}
+
+.img-liste-modele img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.img-liste-modele:hover img {
+  transform: scale(1.25);
+}
+
+.img-modele img{
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  transition: transform .5s ease;
+}

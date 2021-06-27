@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 26 juin 2021 à 18:19
+-- Généré le :  Dim 27 juin 2021 à 16:22
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.4.0
 
@@ -39,7 +39,8 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id`) VALUES
-(6);
+(6),
+(8);
 
 -- --------------------------------------------------------
 
@@ -54,16 +55,17 @@ CREATE TABLE IF NOT EXISTS `adresse` (
   `ville` varchar(50) NOT NULL,
   `cp` varchar(5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `adresse`
 --
 
 INSERT INTO `adresse` (`id`, `rue`, `ville`, `cp`) VALUES
-(1, '117 Avenue de la République ', 'Pontault-Combault', '77340'),
+(1, '117 Avenue de la RÃ©publique', 'Pontault-Combault', '77340'),
 (2, 'Rue random du KB', 'Kremlin Biceps', '91270'),
-(6, 'Rue de l\'admin', 'Ville de l\'admin', '99999');
+(6, 'Rue de l\'admin', 'Ville de l\'admin', '99999'),
+(12, 'Rue du test', 'Ville du Test ', '25324');
 
 -- --------------------------------------------------------
 
@@ -76,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `categorie`
@@ -84,7 +86,8 @@ CREATE TABLE IF NOT EXISTS `categorie` (
 
 INSERT INTO `categorie` (`id`, `nom`) VALUES
 (1, 'Sweat'),
-(2, 'Casquette');
+(2, 'Casquette'),
+(4, 'TEST');
 
 -- --------------------------------------------------------
 
@@ -123,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
   PRIMARY KEY (`id`),
   KEY `idclient` (`idclient`),
   KEY `idproduit` (`idproduit`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `commande`
@@ -131,7 +134,10 @@ CREATE TABLE IF NOT EXISTS `commande` (
 
 INSERT INTO `commande` (`id`, `idclient`, `idproduit`, `quantite`, `prixTotal`, `date`) VALUES
 (4, 1, 1, 1, '48.90', '2021-06-24'),
-(5, 1, 5, 3, '11.85', '2021-06-24');
+(5, 1, 5, 3, '11.85', '2021-06-24'),
+(6, 2, 2, 2, '99.80', '2021-06-27'),
+(7, 2, 5, 1, '3.95', '2021-06-27'),
+(8, 2, 6, 1, '60.00', '2021-06-27');
 
 -- --------------------------------------------------------
 
@@ -149,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `modele` (
   `image` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idcat` (`idcat`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `modele`
@@ -161,7 +167,8 @@ INSERT INTO `modele` (`id`, `nom`, `prix`, `info`, `idcat`, `image`) VALUES
 (4, 'Sweat Warm Sand', '33.29', 'Sweat à capuche marron', 1, 'sweat_warm_sand.jpg'),
 (5, 'Casquette Gucci', '99.95', 'Une belle casquette pour gérer des ptites michros', 2, 'casquette_gucci.jpg'),
 (6, 'Casquette Mercedes', '55.95', 'Casquette de merde réservés aux buveurs de monster', 2, 'casquette_mercedes.jpg'),
-(7, 'Casquette ricard', '3.95', 'Casquette de raciste', 2, 'casquette_ricard.jpg');
+(7, 'Casquette ricard', '3.95', 'Casquette de raciste', 2, 'casquette_ricard.jpg'),
+(8, 'Petit test OKLM', '0.01', 'Tuez moi', 4, 'eso1644bsmall__w770.jpg');
 
 -- --------------------------------------------------------
 
@@ -178,14 +185,6 @@ CREATE TABLE IF NOT EXISTS `panier` (
   KEY `idproduit` (`idproduit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Déchargement des données de la table `panier`
---
-
-INSERT INTO `panier` (`idclient`, `idproduit`, `quantite`) VALUES
-(2, 2, 2),
-(2, 5, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -201,18 +200,25 @@ CREATE TABLE IF NOT EXISTS `produit` (
   PRIMARY KEY (`id`),
   KEY `idproduit` (`idmodele`),
   KEY `idtaille` (`idtaille`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `produit`
 --
 
 INSERT INTO `produit` (`id`, `idmodele`, `idtaille`, `stock`) VALUES
-(1, 1, 1, 9),
-(2, 1, 2, 30),
+(1, 1, 1, 50),
+(2, 1, 2, 28),
 (3, 1, 3, 15),
 (4, 7, 2, 2),
-(5, 7, 3, 2);
+(5, 7, 3, 1),
+(6, 3, 1, 7),
+(7, 3, 2, 15),
+(8, 3, 3, 12),
+(9, 8, 1, 6),
+(10, 8, 2, 1),
+(11, 8, 3, 0),
+(12, 6, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -254,7 +260,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `idadresse` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idadresse` (`idadresse`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `utilisateur`
@@ -262,8 +268,9 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 
 INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `mail`, `mdp`, `date`, `tel`, `idadresse`) VALUES
 (1, 'Girardeau', 'Hugo', 'hugo', 'hugo', '2000-11-05', '0629584490', 2),
-(2, 'Ouazzani', 'ted', 'ted', 'ted', '2021-06-26', '0651313191', 1),
-(6, 'admin', 'admin', 'admin', 'admin', '2021-06-26', '0199999999', 6);
+(2, 'Ouazzani', 'ted', 'ted', 'ted', '2021-06-27', '0651313191', 1),
+(6, 'admin', 'admin', 'admin', 'admin', '2021-06-26', '0199999999', 6),
+(8, 'test', 'test', 'test', 'test', '2021-06-27', '0275235732', 12);
 
 -- --------------------------------------------------------
 

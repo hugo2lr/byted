@@ -9,41 +9,26 @@
  <?php
   include 'config/connect.php';
   include("head.php");
-  include('barre_menu_admin.php');
+  include('barre_menu.php');
+  $search = $_POST['recherche'];
   ?>
-  <body>
+    <body>
         <div class="container">
             <?php
-            $sql = "SELECT nom from categorie WHERE id = ".$_GET['cat'];
-            if ($result = $conn->query($sql)){
-                while ($obj = $result->fetch_object()){
-                    echo "<h1>".$obj->nom."</h1><hr>";
-                    
-                }
-            }
-            $result->close();
+                    echo "<h1>Résultats pour '".$search."'</h1><hr>";
             ?>
 
             <div class="row">
-                <div class="col-2">
-                    <?php echo "<a class='btn btn-primary' href='ajouterModele?cat=".$_GET['cat']."' role='button'>Ajouter un modele</a>"; ?>
-                </div>
-                <div class="col-2">
-                    <?php echo"<a class='btn btn-danger' href='supprimerCategorie?cat=".$_GET['cat']."' role='button'>Supprimer la categorie</a>";?>
-                </div>
-            </div>
-
-            <div class="row">
                 <?php
-                    $sql = "SELECT * FROM modele WHERE modele.idcat = ".$_GET['cat'];
+                    $sql = "SELECT * FROM modele WHERE nom like'%".$search."%'";
                     if ($result = $conn->query($sql)){
                         while ($obj = $result->fetch_object()){
                             echo "<div class='col-sm-12 col-md-6 col-lg-4'>";
-                                echo "<a href='modifierModele?mod=".$obj->id."' ><div class='img-liste-modele'>";
+                                echo "<a href='modele?mod=".$obj->id."' ><div class='img-liste-modele'>";
                                     echo "<img src='img/".$obj->image."'>";
                                 echo "</div></a>";
                                 echo "<div class='product-desc'>";
-                                    echo "<h2><h3><a href='modifierModele?mod=".$obj->id."' >".$obj->nom."</a></h3></h2>";
+                                    echo "<h2><h3><a href='modele?mod=".$obj->id."' >".$obj->nom."</a></h3></h2>";
                                     echo "<div class='product-price'>";
                                         echo "<span class='price'>".$obj->prix."€</span>";
                                     echo "</div>";
@@ -57,8 +42,10 @@
             </div>
         </div>
     </body>
-    <?php
+  <?php
   include('./html/footer.html');
   include('scripts.php');
   ?>
 </html>
+
+

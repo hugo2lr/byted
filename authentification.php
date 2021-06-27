@@ -15,11 +15,11 @@ if ($result->num_rows > 0) {
           $_SESSION["prenom"] = $row["prenom"];
           $_SESSION["nom"] = $row["nom"];
           $_SESSION["id"] = $row["id"];
-          header('Location: home.php');
+          header('Location: index.php');
           echo "ui";
       }
       else {
-        header('Location: index.php');
+        header('Location: login.php');
         echo "no";
       }
   }
@@ -35,11 +35,11 @@ if ($result->num_rows > 0) {
           $_SESSION["prenom"] = $row["prenom"];
           $_SESSION["nom"] = $row["nom"];
           $_SESSION["id"] = $row["id"];
-          header('Location: homeAdmin.php');
+          header('Location: indexAdmin.php');
           echo "ui";
       }
       else {
-        header('Location: index.php');
+        header('Location: login.php');
         echo "no";
       }
   }

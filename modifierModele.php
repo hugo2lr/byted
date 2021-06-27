@@ -1,18 +1,18 @@
-<!DOCTYPE html>
-<html lang=fr>
-    <head>
-        <meta charset="utf-8"/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-        <link href="css/style.css" rel="stylesheet">
-        <title>BYTED Clothes</title>
-        <?php
+<html> 
+<head>
+  <link rel="stylesheet" href="page_accueil.css">
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ </head>
 
-include 'config/connect.php';
-session_start();
-$mod = $_GET['mod'];
-?>
-    </head>
-    <body>
+ <?php
+  include 'config/connect.php';
+  include("head.php");
+  $mod = $_GET['mod'];
+  include('barre_menu_admin.php');
+  ?>
+  <body>
         <div class="container">
            <?php
                 $sql = "SELECT * FROM modele WHERE id =".$mod;
@@ -51,6 +51,44 @@ $mod = $_GET['mod'];
                         accept="image/png, image/jpeg">
                     </div>
                     
+                    <div class="row">
+                        <h2>Disponible en :</h2>
+                    </div>
+                        <?php
+                            $sql = "SELECT * FROM produit WHERE idmodele =".$mod;
+                            if ($result = $conn->query($sql)){
+                                while ($obj = $result->fetch_object()){
+                                    if ($obj->idtaille == 1){
+                                        echo "<p>S - ".$obj->stock."</p>";
+                                    }
+                                    if ($obj->idtaille == 2){
+                                        echo "<p>M - ".$obj->stock."</p>";
+                                    }
+                                    if ($obj->idtaille == 3){
+                                        echo "<p>L - ".$obj->stock."</p>";
+                                    }
+                                }
+                            }
+                        ?>
+                    <select name="taille" required class="form-select" aria-label="Default select example">
+                                
+                                <?php
+                                    $sql = "SELECT * FROM taille";
+                                    if ($result = $conn->query($sql)){
+                                        while ($obj = $result->fetch_object()){
+
+                                                echo "<option value='".$obj->id."'>".$obj->nomTaille."</option>";
+                                            
+                                        }
+                                    }
+                                    
+                                            
+                                ?>
+
+                            </select>
+                            <input type="number" class="qty" name="qty" min="0"/>
+                            <br>
+
                     <button type="submit" class="btn btn-primary mb-2">Modifier</button>
                          </form>
                          <?php echo "<a class='btn btn-danger' href='supprimerModele?id=".$mod."' role='button'>Supprimer</a>" ?>
@@ -61,4 +99,7 @@ $mod = $_GET['mod'];
            ?>
         </div>
     </body>
-</html>
+    <?php
+  include('./html/footer.html');
+  include('scripts.php');
+  ?>

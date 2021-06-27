@@ -16,13 +16,13 @@
 
             <div class="row">
                 <div class="col-12">
-                    <h1>Wishlist</h1>
+                    <h1>Commandes</h1>
                     <hr>
                 </div>
             </div>
 
         <?php
-            $sql = "SELECT * from wishlist, modele WHERE idclient = ".$_SESSION["id"]." and modele.id = wishlist.idmodele";
+            $sql = "SELECT * from commande, produit, modele, taille WHERE idclient = ".$_SESSION["id"]." and produit.id = commande.idproduit and modele.id = produit.idmodele and produit.idtaille = taille.id";
             if ($result = $conn->query($sql)){
                 while ($obj = $result->fetch_object()){
                     echo "<div class='row'>";
@@ -34,23 +34,24 @@
                         echo "<div class='col-8'>";
                             echo "<div class='produit-panier-info'>";
                                 echo "<div class='produit-panier-header'>";
-                                    echo "<h3>".$obj->nom;
+                                    echo "<h3>".$obj->nom." - ".$obj->nomTaille." (".$obj->quantite.")</h3>";
                                 echo "</div>";
                                 echo "<span><p>";
                                 
-                                        echo $obj->prix."€";
-
-                                echo "</p></span>";                              
+                                echo $obj->prixTotal."€";
+                                echo "</p></span>";   
+                                echo "<span><p>";
+                                
+                                echo $obj->date;
+                                echo "</p></span>";                           
                             echo "</div>";
-                            echo "<a class='btn btn-primary' href='modele?mod=".$obj->idmodele."' role='button'>Voir le produit</a>";
-                            echo "<a class='btn btn-danger' href='supprimerWishlist?mod=".$obj->idmodele."' role='button'>Supprimer de la wishlist</a>";
                         echo "</div>";
                     echo "</div>";
                     echo "<hr>";
 
                 }
             }
-
+           
             ?>
             
         </div>
