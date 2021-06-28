@@ -76,7 +76,7 @@
         <a class="nav-link" href="login.php"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a>
       </li>
     </ul>
-       <form class="form-inline my-2 my-sm-0" action='recherche' method='post'>
+       <form class="form-inline my-2 my-sm-0" action='recherche.php' method='post'>
       <input class="form-control mr-sm-2" type="search" placeholder="Un article en tête ?" aria-label="Search" name="recherche">
       <button class="btn rechercher btn-primary	 btn-sm" type="submit">Rechercher</button>
     </form>
