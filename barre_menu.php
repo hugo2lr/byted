@@ -63,13 +63,16 @@
 
         <li class="nav-item">
         <a class="nav-link" href="./panier.php"><i class="fas fa-shopping-cart"></i> Panier   <span class="badge badge-pill badge-secondary"><?php 
-        $sql = "SELECT SUM(quantite) AS count FROM panier WHERE idclient =".$_SESSION['id'];
-        if ($result = $conn->query($sql)){
-          while ($obj = $result->fetch_object()){
-              echo $obj->count;
-              
+          if ((isset($_SESSION['id']))){
+            $sql = "SELECT SUM(quantite) AS count FROM panier WHERE idclient =".$_SESSION['id'];
+            if ($result = $conn->query($sql)){
+              while ($obj = $result->fetch_object()){
+                  echo $obj->count;
+                  
+              }
           }
-      }
+          }
+
         ?></span></a> 
       </li>
       <li class="nav-item ">

@@ -7,8 +7,13 @@
  </head>
 
  <?php
+
   include 'config/connect.php';
   include("head.php");
+  if (!(isset($_SESSION['id']))){
+    header('Location: login.php');
+    exit;
+  }
   include('barre_menu.php');
   ?>
 <body>

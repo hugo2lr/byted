@@ -2,6 +2,10 @@
 
 include 'config/connect.php';
 session_start();
+if (!(isset($_SESSION['id']))){
+    header('Location: login.php');
+    exit;
+  }
 $id = $_SESSION["id"];
 $mod=$_GET["mod"];
 

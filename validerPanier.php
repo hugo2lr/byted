@@ -27,6 +27,6 @@ if ($result = $conn->query($sql)){
 $sql = "DELETE FROM panier WHERE idclient = ".$id;
 $conn->query($sql);
 
-header('Location: home.php');
+header('Location: index.php');
 
 ?>

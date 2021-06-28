@@ -14,7 +14,7 @@ if ($result->num_rows > 0) {
       if ($_SESSION["mdp"] == $row["mdp"]){
           $_SESSION["prenom"] = $row["prenom"];
           $_SESSION["nom"] = $row["nom"];
-          $_SESSION["id"] = $row["id"];
+          $_SESSION['id'] = $row["id"];
           header('Location: index.php');
           echo "ui";
       }
