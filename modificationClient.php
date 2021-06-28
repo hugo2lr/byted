@@ -47,5 +47,5 @@ if (isset($_POST['cp'])&& ($_POST['cp']!='')){
     $conn->query($sql);
 }
 
-header('Location: modifierClient?id='.$_POST["id"]);
+header('Location: modifierClient.php?id='.$_POST["id"]);
 ?>

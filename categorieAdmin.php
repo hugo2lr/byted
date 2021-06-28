@@ -26,10 +26,10 @@
 
             <div class="row">
                 <div class="col-2">
-                    <?php echo "<a class='btn btn-primary' href='ajouterModele?cat=".$_GET['cat']."' role='button'>Ajouter un modele</a>"; ?>
+                    <?php echo "<a class='btn btn-primary' href='ajouterModele.php?cat=".$_GET['cat']."' role='button'>Ajouter un modele</a>"; ?>
                 </div>
                 <div class="col-2">
-                    <?php echo"<a class='btn btn-danger' href='supprimerCategorie?cat=".$_GET['cat']."' role='button'>Supprimer la categorie</a>";?>
+                    <?php echo"<a class='btn btn-danger' href='supprimerCategorie.php?cat=".$_GET['cat']."' role='button'>Supprimer la categorie</a>";?>
                 </div>
             </div>
 
@@ -39,11 +39,11 @@
                     if ($result = $conn->query($sql)){
                         while ($obj = $result->fetch_object()){
                             echo "<div class='col-sm-12 col-md-6 col-lg-4'>";
-                                echo "<a href='modifierModele?mod=".$obj->id."' ><div class='img-liste-modele'>";
+                                echo "<a href='modifierModele.php?mod=".$obj->id."' ><div class='img-liste-modele'>";
                                     echo "<img src='img/".$obj->image."'>";
                                 echo "</div></a>";
                                 echo "<div class='product-desc'>";
-                                    echo "<h2><h3><a href='modifierModele?mod=".$obj->id."' >".$obj->nom."</a></h3></h2>";
+                                    echo "<h2><h3><a href='modifierModele.php?mod=".$obj->id."' >".$obj->nom."</a></h3></h2>";
                                     echo "<div class='product-price'>";
                                         echo "<span class='price'>".$obj->prix."€</span>";
                                     echo "</div>";

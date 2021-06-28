@@ -36,5 +36,5 @@ if (isset($_POST['qty'])&& ($_POST['qty']!='')){
     }
 }
 
-header('Location: modifierModele?mod='.$_POST["mod"]);
+header('Location: modifierModele.php?mod='.$_POST["mod"]);
 ?>

@@ -91,7 +91,7 @@
 
                     <button type="submit" class="btn btn-primary mb-2">Modifier</button>
                          </form>
-                         <?php echo "<a class='btn btn-danger' href='supprimerModele?id=".$mod."' role='button'>Supprimer</a>" ?>
+                         <?php echo "<a class='btn btn-danger' href='supprimerModele.php?id=".$mod."' role='button'>Supprimer</a>" ?>
                         </div>
                         <?php
                     }

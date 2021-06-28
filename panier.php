@@ -45,7 +45,7 @@
                             }
                                 echo "</p></span>";                              
                             echo "</div>";
-                            echo "<a class='btn btn-danger' href='supprimerPanier?prod=".$obj->idproduit."' role='button'>Supprimer du panier</a>";
+                            echo "<a class='btn btn-danger' href='supprimerPanier.php?prod=".$obj->idproduit."' role='button'>Supprimer du panier</a>";
                         echo "</div>";
                     echo "</div>";
                     echo "<hr>";

@@ -14,19 +14,19 @@
         <div class="container">
 
             <div class="row">
-                <a href="listeCategorie">Produits</a>
+                <a href="listeCategorie.php">Produits</a>
             </div>
 
             <div class="row">
-                <a href="panier">Panier</a>
+                <a href="panier.php">Panier</a>
             </div>
 
             <div class="row">
-                <a href="wishlist">Wishlist</a>
+                <a href="wishlist.php">Wishlist</a>
             </div>
 
             <div class="row">
-                <a href="profil">Profil</a>
+                <a href="profil.php">Profil</a>
             </div>
 
         </div>

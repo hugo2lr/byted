@@ -32,7 +32,7 @@
             $sql = "SELECT * from categorie";
             if ($result = $conn->query($sql)){
                 while ($obj = $result->fetch_object()){
-                    echo "<a class='dropdown-item' href='categorie?cat=".$obj->id."'>".$obj->nom."</a>";
+                    echo "<a class='dropdown-item' href='categorie.php?cat=".$obj->id."'>".$obj->nom."</a>";
                     
                 }
             }

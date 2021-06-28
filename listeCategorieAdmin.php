@@ -19,14 +19,14 @@
             $sql = "SELECT * from categorie";
             if ($result = $conn->query($sql)){
                 while ($obj = $result->fetch_object()){
-                    echo "<li><a href='categorieAdmin?cat=".$obj->id."'>".$obj->nom."</a></li>";
+                    echo "<li><a href='categorieAdmin.php?cat=".$obj->id."'>".$obj->nom."</a></li>";
                     
                 }
             }
             $result->close();
             ?>
             </ul>
-            <a class='btn btn-primary' href='ajouterCategorie' role='button'>Ajouter une categorie</a>
+            <a class='btn btn-primary' href='ajouterCategorie.php' role='button'>Ajouter une categorie</a>
         </div>
     </body>
     <?php

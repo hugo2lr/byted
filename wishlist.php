@@ -42,8 +42,8 @@
 
                                 echo "</p></span>";                              
                             echo "</div>";
-                            echo "<a class='btn btn-primary' href='modele?mod=".$obj->idmodele."' role='button'>Voir le produit</a>";
-                            echo "<a class='btn btn-danger' href='supprimerWishlist?mod=".$obj->idmodele."' role='button'>Supprimer de la wishlist</a>";
+                            echo "<a class='btn btn-primary' href='modele.php?mod=".$obj->idmodele."' role='button'>Voir le produit</a>";
+                            echo "<a class='btn btn-danger' href='supprimerWishlist.php?mod=".$obj->idmodele."' role='button'>Supprimer de la wishlist</a>";
                         echo "</div>";
                     echo "</div>";
                     echo "<hr>";

@@ -68,8 +68,8 @@
                         <input type="text" class="form-control " id="inputCP" name="cp" placeholder="<?php echo $obj->cp ?>"  onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="5" minlength="5">
                     <button type="submit" class="btn btn-primary mb-2">Modifier</button>
                          </form>
-                         <?php echo "<a class='btn btn-danger' href='supprimerClient?id=".$idclient."' role='button'>Supprimer</a>" ?>
-                         <?php echo "<a class='btn btn-warning' href='rendreAdmin?id=".$idclient."' role='button'>Rendre admin</a>" ?>
+                         <?php echo "<a class='btn btn-danger' href='supprimerClient.php?id=".$idclient."' role='button'>Supprimer</a>" ?>
+                         <?php echo "<a class='btn btn-warning' href='rendreAdmin.php?id=".$idclient."' role='button'>Rendre admin</a>" ?>
                         </div>
                         <?php
                     }

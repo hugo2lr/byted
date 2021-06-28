@@ -33,5 +33,5 @@ if ($result = $conn->query($sql)){
 }
 
 
-header('Location: listeCategorieAdmin');
+header('Location: listeCategorieAdmin.php');
 ?>

@@ -7,6 +7,6 @@ $nom = $_POST["nom"];
 $sql = "INSERT INTO categorie VALUES (NULL, '".$nom."')";
 $conn->query($sql);
 
-header('Location: listeCategorieAdmin');
+header('Location: listeCategorieAdmin.php');
 
 ?>

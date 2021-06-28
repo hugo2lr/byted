@@ -21,7 +21,7 @@
             $sql2= "SELECT * FROM utilisateur WHERE id=".$obj->idclient;
             if ($result2 = $conn->query($sql2)){
                 while ($obj2 = $result2->fetch_object()){
-                    echo "<a href='modificerClient?id".$obj->idclient."'>".$obj2->prenom." ".$obj2->nom.": ".$obj->sum."€ de commande</a>";
+                    echo "<a href='modificerClient.php?id".$obj->idclient."'>".$obj2->prenom." ".$obj2->nom.": ".$obj->sum."€ de commande</a>";
                 }
             }
             echo "</div>";

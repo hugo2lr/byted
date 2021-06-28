@@ -19,7 +19,7 @@
                     while ($obj = $result->fetch_object()){
                         
                         echo "<div class='row'>";
-                            echo "<a href='modifierClient?id=".$obj->id."'>".$obj->prenom." ".$obj->nom."</a>";
+                            echo "<a href='modifierClient.php?id=".$obj->id."'>".$obj->prenom." ".$obj->nom."</a>";
                         echo "</div>";
                     }
                 }

@@ -18,7 +18,7 @@
             $sql = "SELECT * from categorie";
             if ($result = $conn->query($sql)){
                 while ($obj = $result->fetch_object()){
-                    echo "<li><a href='categorie?cat=".$obj->id."'>".$obj->nom."</a></li>";
+                    echo "<li><a href='categorie.php?cat=".$obj->id."'>".$obj->nom."</a></li>";
                     
                 }
             }

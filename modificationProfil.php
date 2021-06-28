@@ -47,5 +47,5 @@ if (isset($_POST['cp'])&& ($_POST['cp']!='')){
     $conn->query($sql);
 }
 
-header('Location: profil');
+header('Location: profil.php');
 ?>

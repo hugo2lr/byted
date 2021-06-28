@@ -6,5 +6,5 @@ $cat = $_GET['cat'];
 
 $sql = "DELETE FROM categorie WHERE id=".$cat;
 $conn->query($sql);
-header('Location: listeCategorieAdmin');
+header('Location: listeCategorieAdmin.php');
 ?>
