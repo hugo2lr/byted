@@ -55,9 +55,9 @@
         <i class="fas fa-user"></i> Profil 
         </a>
         <div class="dropdown-menu">
-        <a class='dropdown-item' href="profil">Profil</a>
-        <a class='dropdown-item' href="wishlist">Wishlist</a>
-        <a class='dropdown-item' href="commandes">Commandes</a>
+        <a class='dropdown-item' href="profil.php">Profil</a>
+        <a class='dropdown-item' href="wishlist.php">Wishlist</a>
+        <a class='dropdown-item' href="commandes.php">Commandes</a>
         </div>
       </li>
 
