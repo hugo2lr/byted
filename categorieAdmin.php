@@ -1,7 +1,7 @@
 <html> 
 <head>
   <link rel="stylesheet" href="page_accueil.css">
-  <title>Bootstrap Example</title>
+  <title>Byted</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
  </head>
