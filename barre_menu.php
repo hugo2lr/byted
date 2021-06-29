@@ -42,7 +42,7 @@
       </li>
 
       <li class="nav-item ">
-        <a class="nav-link" href="notre_histoire.php">Notre histoire </a>
+        <a class="nav-link" href="#">Notre histoire </a>
       </li>
       <li class="nav-item ">
         <a class="nav-link" href="nous_contacter.php"> Nous contacter </a>
