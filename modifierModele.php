@@ -89,6 +89,27 @@
                             <input type="number" class="qty" name="qty" min="0"/>
                             <br>
 
+                        <?php
+                            $sql = "SELECT SUM(prixTotal)  AS prix FROM commande WHERE idproduit IN (SELECT id from produit WHERE idmodele =".$mod.")";
+                            if ($result = $conn->query($sql)){
+                                while ($obj = $result->fetch_object()){
+                                    echo "<p>Argent généré: ".$obj->prix."€</p>";
+                                    $sql2 = "SELECT SUM(prixTotal)  AS prix FROM commande";
+                                    if ($result2 = $conn->query($sql2)){
+                                        while ($obj2 = $result2->fetch_object()){
+                                            echo "<p>".((round( ($obj->prix)/($obj2->prix), 2 ))*100)."% des ventes</p>";
+                                        }
+                                    }
+                                }
+                            }
+                            $sql = "SELECT SUM(quantite) AS nombre FROM commande WHERE idproduit IN (SELECT id from produit WHERE idmodele=".$mod.")";
+                            if ($result = $conn->query($sql)){
+                                while ($obj = $result->fetch_object()){
+                                    echo "<p>Nombre d'articles vendus: ".$obj->nombre."</p>";
+                                }
+                            }
+                        ?>
+
                     <button type="submit" class="btn btn-primary mb-2">Modifier</button>
                          </form>
                          <?php echo "<a class='btn btn-danger' href='supprimerModele.php?id=".$mod."' role='button'>Supprimer</a>" ?>

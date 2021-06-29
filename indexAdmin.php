@@ -21,7 +21,13 @@
             $sql2= "SELECT * FROM utilisateur WHERE id=".$obj->idclient;
             if ($result2 = $conn->query($sql2)){
                 while ($obj2 = $result2->fetch_object()){
-                    echo "<a href='modifierClient.php?id=".$obj->idclient."'>".$obj2->prenom." ".$obj2->nom.": ".$obj->sum."€ de commande</a>";
+                  $sql3= "SELECT SUM(prixTotal) AS sum FROM commande";
+                  if ($result3 = $conn->query($sql3)){
+                    while ($obj3 = $result3->fetch_object()){
+                      echo "<a href='modifierClient.php?id=".$obj->idclient."'>".$obj2->prenom." ".$obj2->nom.": ".$obj->sum."€ de commande, soit ".( round( ($obj->sum)/($obj3->sum),2 )*100)."% des ventes</a>";
+                    }
+                  }
+                    
                 }
             }
             echo "</div>";

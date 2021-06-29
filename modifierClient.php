@@ -66,6 +66,17 @@
                         <div class="col-md-3 mb-3">
                         <label for="inputCP">Code postal</label>
                         <input type="text" class="form-control " id="inputCP" name="cp" placeholder="<?php echo $obj->cp ?>"  onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="5" minlength="5">
+                    
+                    <?php
+                        $sql = "SELECT SUM(quantite) AS sum FROM commande WHERE idclient =".$idclient;
+                        if ($result = $conn->query($sql)){
+                            while ($obj = $result->fetch_object()){
+                                echo "<p>Nombre d'articles achetés: ".$obj->sum."</p>";
+                                
+                            }
+                        }
+                    ?>
+                    
                     <button type="submit" class="btn btn-primary mb-2">Modifier</button>
                          </form>
                          <?php echo "<a class='btn btn-danger' href='supprimerClient.php?id=".$idclient."' role='button'>Supprimer</a>" ?>
