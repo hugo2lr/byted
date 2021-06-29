@@ -1,4 +1,5 @@
  <?php
+  include 'config/connect.php';
   include("head.php");
   include('barre_menu.php');?>
 
