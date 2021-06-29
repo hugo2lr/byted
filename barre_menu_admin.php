@@ -33,6 +33,10 @@
       </li>
 
     </ul>
+    <form class="form-inline my-2 my-sm-0" action='rechercheAdmin.php' method='post'>
+      <input class="form-control mr-sm-2" type="search" placeholder="Un article en tête ?" aria-label="Search" name="recherche">
+      <button class="btn rechercher btn-primary	 btn-sm" type="submit">Rechercher</button>
+    </form>
   </div>
 </nav>
 
